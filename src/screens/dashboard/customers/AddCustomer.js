@@ -1,5 +1,4 @@
 import {
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -88,13 +87,11 @@ const AddCustomer = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <SafeAreaView>
-        <Header
-          screenNname={'Add Customer'}
-          btnName={'CANCEL'}
-          onPress={onCancel}
-        />
-      </SafeAreaView>
+      <Header
+        screenNname={'Add Customer'}
+        btnName={'CANCEL'}
+        onPress={onCancel}
+      />
       <ScrollView>
         <View style={styles.inputWrapper}>
           <InputField
@@ -185,17 +182,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inputWrapper: {
-    marginHorizontal: wp(4),
-  },
-  buttonStyle: {
-    flex: 1,
-    position: 'absolute',
-    alignItems: 'center',
-    justifyContent: 'center',
-    right: wp(8),
-    bottom: hp(4),
-    borderRadius: 30,
-    zIndex: 1,
+    marginTop: 30,
   },
   checkbox: {
     height: Platform.OS === 'ios' ? hp(2.4) : hp(2.8),
@@ -211,5 +198,15 @@ const styles = StyleSheet.create({
   correctStyle: {
     height: hp(2),
     width: wp(3),
+  },
+  buttonStyle: {
+    flex: 1,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    right: wp(8),
+    bottom: hp(4),
+    borderRadius: 30,
+    zIndex: 1,
   },
 });

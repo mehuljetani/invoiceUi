@@ -1,8 +1,6 @@
 import {
-  Button,
   Image,
   Platform,
-  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -18,7 +16,7 @@ import {Header, InputField, RectButton} from '../../../components';
 
 const Detail = ({label, value}) => {
   return (
-    <View style={{padding: 12, flexDirection: 'row'}}>
+    <View style={{padding: 12, flexDirection: 'row', marginLeft: 30}}>
       <View style={{width: '40%'}}>
         <Text style={{fontSize: 16, color: 'black'}}>{label} </Text>
       </View>
@@ -69,84 +67,61 @@ const ProductDetail = ({route, navigation}) => {
 
   return (
     <View style={styles.container}>
-      <SafeAreaView>
-        <Header btnName={'BACK'} onPress={onBack} />
-      </SafeAreaView>
-      <View style={styles.detailWrapper}>
-        <View style={styles.NameWrapper}>
-          <Text style={styles.NameStyle}>{data.name}</Text>
-        </View>
-        <View style={styles.imageWrapper}>
-          {isLoading ? (
-            <View style={{height: 130}}>
-              <ActivityIndicator size={'large'} animating={true} />
-            </View>
-          ) : (
-            <Image
-              source={{uri: data?.productImage}}
-              style={styles.imageStyle}
+      <Header btnName={'BACK'} onPress={onBack} />
+      <Text style={styles.NameStyle}>{data.productName}</Text>
+      <View style={styles.imageWrapper}>
+        {isLoading ? (
+          <View style={{height: 130}}>
+            <ActivityIndicator size={'large'} animating={true} />
+          </View>
+        ) : (
+          <Image source={{uri: data?.productImage}} style={styles.imageStyle} />
+        )}
+      </View>
+      <Detail label={'Product Name  '} value={data.productName} />
+      <Detail label={'Stock  '} value={data.stock} />
+      <Detail label={'Description  '} value={data.description} />
+      <Detail label={'Price  '} value={data.price} />
+      <Detail label={'IGST  '} value={data.igst} />
+      <Detail label={'HSN Code  '} value={data.hsnCode} />
+      <Modal
+        animationInTiming={1000}
+        isVisible={isModalVisible}
+        style={{backgroundColor: 'white'}}
+        animationOut={'zoomOut'}
+        animationOutTiming={1000}
+        animationIn={'zoomIn'}>
+        <TouchableOpacity onPress={toggleModal} style={styles.toggleButton}>
+          <Text style={{color: 'white', fontSize: 16}}>Close</Text>
+        </TouchableOpacity>
+        <View style={{marginHorizontal: 20}}>
+          <InputField
+            keyboardType={'numeric'}
+            label={'Add Stock'}
+            value={stock}
+            onChangeText={onStock}
+          />
+          <View style={styles.addStockStyle}>
+            <RectButton
+              btnName={'ADD STOCK '}
+              iconImage={''}
+              onPress={addStock}
             />
-          )}
+          </View>
         </View>
-        <View style={styles.productDetail}>
-          <Detail label={'Product Name  '} value={data.productName} />
-          <Detail label={'Stock  '} value={data.stock} />
-          <Detail label={'Description  '} value={data.description} />
-          <Detail label={'Price  '} value={data.price} />
-          <Detail label={'IGST  '} value={data.igst} />
-          <Detail label={'HSN Code  '} value={data.hsnCode} />
-        </View>
-        <View style={styles.addStockWrapper}>
-          <Modal
-            animationInTiming={1000}
-            isVisible={isModalVisible}
-            style={{backgroundColor: 'white'}}
-            animationOut={'zoomOut'}
-            animationOutTiming={1000}
-            animationIn={'zoomIn'}>
-            <View style={{flex: 1}}>
-              <TouchableOpacity
-                onPress={toggleModal}
-                style={styles.toggleButton}>
-                <Text style={{color: 'white', fontSize: 16}}>Close</Text>
-              </TouchableOpacity>
-              <View style={{marginHorizontal: 20}}>
-                <InputField
-                  keyboardType={'numeric'}
-                  label={'Add Stock'}
-                  value={stock}
-                  onChangeText={onStock}
-                />
-                <View
-                  style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    marginTop: 20,
-                  }}>
-                  <RectButton
-                    btnName={'ADD STOCK '}
-                    iconImage={''}
-                    onPress={addStock}
-                  />
-                </View>
-              </View>
-            </View>
-            <View style={{}}></View>
-          </Modal>
-        </View>
-
-        <View style={styles.btnWrapper}>
-          <RectButton
-            btnName={'Add Stock'}
-            iconImage={''}
-            onPress={toggleModal}
-          />
-          <RectButton
-            btnName={'EDIT'}
-            iconImage={require('../../../../assets/images/pencil.png')}
-            onPress={() => onEdit(data, productDocId)}
-          />
-        </View>
+        <View style={{}}></View>
+      </Modal>
+      <View style={styles.btnWrapper}>
+        <RectButton
+          btnName={'Add Stock'}
+          iconImage={''}
+          onPress={toggleModal}
+        />
+        <RectButton
+          btnName={'EDIT'}
+          iconImage={require('../../../../assets/images/pencil.png')}
+          onPress={() => onEdit(data, productDocId)}
+        />
       </View>
     </View>
   );
@@ -158,16 +133,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  detailWrapper: {
-    marginTop: Platform.OS === 'ios' ? hp(-7) : hp(-10),
-  },
-  NameWrapper: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   NameStyle: {
     color: 'black',
-    fontWeight: '500',
+    fontSize: 24,
+    textAlign: 'center',
   },
   imageWrapper: {
     marginTop: 18,
@@ -178,12 +147,14 @@ const styles = StyleSheet.create({
     height: 130,
     width: 130,
   },
-  productDetail: {
-    marginLeft: 30,
+  addStockStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
   },
   btnWrapper: {
     flexDirection: 'row',
-    marginTop: Platform.OS === 'ios' ? 200 : 121,
+    marginTop: Platform.OS === 'ios' ? 190 : 50,
     justifyContent: 'space-evenly',
   },
   toggleButton: {

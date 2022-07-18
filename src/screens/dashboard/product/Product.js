@@ -1,7 +1,6 @@
 import {
   FlatList,
   Platform,
-  SafeAreaView,
   StyleSheet,
   Text,
   View,
@@ -34,39 +33,36 @@ const Product = ({navigation}) => {
     const letter = item.productName.charAt(0);
 
     return (
-      <View style={styles.container}>
-        <View style={styles.customerWrapper}>
-          <TouchableOpacity
-            style={styles.btnStyle}
-            onPress={() => onProductDetail(item, productDocId)}>
-            <View
-              style={[
-                styles.btnWrapper,
-                {
-                  borderColor: `rgba(${r},${g},${b},${0.1})`,
-                  backgroundColor: `rgba(${r},${g},${b}, ${0.3})`,
-                },
-              ]}>
-              <Text style={styles.letterStyle}>{letter}</Text>
-            </View>
-            <View style={styles.customerDetail}>
-              <Text style={styles.nameStyle}>{item.productName}</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
+      <View style={styles.customerWrapper}>
+        <TouchableOpacity
+          style={styles.btnStyle}
+          onPress={() => onProductDetail(item, productDocId)}>
+          <View
+            style={[
+              styles.btnWrapper,
+              {
+                borderColor: `rgba(${r},${g},${b},${0.1})`,
+                backgroundColor: `rgba(${r},${g},${b}, ${0.3})`,
+              },
+            ]}>
+            <Text style={styles.letterStyle}>{letter}</Text>
+          </View>
+          <View style={styles.customerDetail}>
+            <Text style={styles.nameStyle}>{item.productName}</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   };
 
   return (
     <View style={styles.container}>
-      <SafeAreaView>
-        <Header screenNname={'Products'} btnName={'BACK'} onPress={onBack} />
-      </SafeAreaView>
+      <Header screenNname={'Products'} btnName={'BACK'} onPress={onBack} />
       <FlatList
         data={product}
         renderItem={renderItem}
         keyExtractor={item => item.id}
+        style={{marginTop: 30}}
       />
       <View style={styles.buttonStyle}>
         <RectButton

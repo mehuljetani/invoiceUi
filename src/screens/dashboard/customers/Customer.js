@@ -1,8 +1,6 @@
 import {
   FlatList,
   Platform,
-  SafeAreaView,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -70,12 +68,8 @@ const Customer = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <SafeAreaView>
-        <Header screenNname={'Customers'} onPress={onBack} btnName={'BACK'} />
-      </SafeAreaView>
-      <View style={{flex: 1}}>
-        <FlatList data={user} renderItem={renderItem} />
-      </View>
+      <Header screenNname={'Customers'} onPress={onBack} btnName={'BACK'} />
+      <FlatList data={user} renderItem={renderItem} style={{marginTop: 30}} />
       <View style={styles.buttonStyle}>
         <CircleButton
           height={75}
@@ -95,7 +89,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   customerWrapper: {
-    flex: 1,
     marginHorizontal: 6,
     borderWidth: 1,
     borderColor: '#DDDDDD',
@@ -116,14 +109,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   letterStyle: {
-    fontSize: Platform.OS === 'ios' ? fv(21) : fv(25),
+    fontSize: 25,
     color: 'black',
   },
   customerDetail: {
     marginLeft: wp(3),
   },
   nameStyle: {
-    fontSize: Platform.OS === 'ios' ? fv(16) : fv(18),
+    fontSize: 18,
     color: 'black',
   },
   numberStyle: {

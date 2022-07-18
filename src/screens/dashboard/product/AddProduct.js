@@ -1,7 +1,6 @@
 import {
   Image,
   Platform,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -129,81 +128,72 @@ const AddProduct = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <SafeAreaView>
-        <Header
-          btnName={'CANCEL'}
-          screenNname={'Add Product'}
-          onPress={onCancel}
-        />
-      </SafeAreaView>
+      <Header
+        btnName={'CANCEL'}
+        screenNname={'Add Product'}
+        onPress={onCancel}
+      />
       <Text style={styles.productText}>Product Detail</Text>
-
       <ScrollView>
-        <View style={styles.inputWrapper}>
-          <View style={styles.fileWrapper}>
-            <Text style={{left: -30, color: 'black', fontSize: 16}}>
-              Choose File
-            </Text>
-            <Text style={{left: -30, color: 'black', fontSize: 16}}>
-              {uploading ? (
-                <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                  <Text>{transferred} % Done!</Text>
-                  <ActivityIndicator animating={true} color={'#DA5B22'} />
-                </View>
-              ) : (
-                <View></View>
-              )}
-            </Text>
-            <TouchableOpacity onPress={handleChoosePhoto}>
-              <View style={styles.imageWrapper}>
-                <Image
-                  source={
-                    image === ''
-                      ? require('../../../../assets/images/upload.png')
-                      : {uri: image}
-                  }
-                  style={styles.imageStyle}
-                />
+        <View style={styles.fileWrapper}>
+          <Text style={{color: 'black', fontSize: 16}}>Choose File</Text>
+          <Text style={{color: 'black', fontSize: 16}}>
+            {uploading ? (
+              <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                <Text>{transferred} % Done!</Text>
+                <ActivityIndicator animating={true} color={'#DA5B22'} />
               </View>
-            </TouchableOpacity>
-          </View>
-          <View>
-            <InputField
-              label={'Product Name'}
-              value={productName}
-              onChangeText={onProductName}
+            ) : (
+              <View />
+            )}
+          </Text>
+          <TouchableOpacity
+            onPress={handleChoosePhoto}
+            style={styles.imageWrapper}>
+            <Image
+              source={
+                image === ''
+                  ? require('../../../../assets/images/upload.png')
+                  : {uri: image}
+              }
+              style={styles.imageStyle}
             />
-            <InputField
-              label={'Description'}
-              value={description}
-              onChangeText={onDescription}
-            />
-            <InputField
-              label={'Stock'}
-              value={stock}
-              onChangeText={onStock}
-              keyboardType={'numeric'}
-            />
-            <InputField
-              label={'Price'}
-              value={price}
-              onChangeText={onPrice}
-              keyboardType={'numeric'}
-            />
-            <InputField
-              label={'IGST'}
-              value={igst}
-              onChangeText={onIgst}
-              keyboardType={'numeric'}
-            />
-            <InputField
-              label={'HSN Code'}
-              value={hsnCode}
-              onChangeText={onHsnCode}
-              keyboardType={'numeric'}
-            />
-          </View>
+          </TouchableOpacity>
         </View>
+        <InputField
+          label={'Product Name'}
+          value={productName}
+          onChangeText={onProductName}
+        />
+        <InputField
+          label={'Description'}
+          value={description}
+          onChangeText={onDescription}
+        />
+        <InputField
+          label={'Stock'}
+          value={stock}
+          onChangeText={onStock}
+          keyboardType={'numeric'}
+        />
+        <InputField
+          label={'Price'}
+          value={price}
+          onChangeText={onPrice}
+          keyboardType={'numeric'}
+        />
+        <InputField
+          label={'IGST'}
+          value={igst}
+          onChangeText={onIgst}
+          keyboardType={'numeric'}
+        />
+        <InputField
+          label={'HSN Code'}
+          value={hsnCode}
+          onChangeText={onHsnCode}
+          keyboardType={'numeric'}
+        />
       </ScrollView>
       <View style={styles.buttonStyle}>
         <CircleButton
@@ -222,9 +212,6 @@ export default AddProduct;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  inputWrapper: {
-    marginHorizontal: wp(4),
   },
   productText: {
     fontSize: 21,

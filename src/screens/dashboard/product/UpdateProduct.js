@@ -116,78 +116,72 @@ const UpdateProduct = ({route, navigation}) => {
 
   return (
     <View style={styles.container}>
-      <SafeAreaView>
-        <Header
-          btnName={'CANCEL'}
-          screenNname={'Update Product'}
-          onPress={onCancel}
-        />
-      </SafeAreaView>
+      <Header
+        btnName={'CANCEL'}
+        screenNname={'Update Product'}
+        onPress={onCancel}
+      />
       <ScrollView>
-        <View style={styles.inputWrapper}>
-          <View style={styles.fileWrapper}>
-            <Text style={{left: -30, color: 'black', fontSize: 16}}>
-              Choose File
-            </Text>
-            <Text style={{left: -30, color: 'black', fontSize: 16}}>
-              {uploading ? (
-                <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                  <Text>{transferred} % Done!</Text>
-                  <ActivityIndicator animating={true} color={'#DA5B22'} />
-                </View>
-              ) : (
-                <View></View>
-              )}
-            </Text>
-            <TouchableOpacity onPress={handleChoosePhoto}>
-              <View style={styles.imageWrapper}>
-                <Image
-                  source={
-                    image === ''
-                      ? require('../../../../assets/images/upload.png')
-                      : {uri: image}
-                  }
-                  style={styles.imageStyle}
-                />
+        <View style={styles.fileWrapper}>
+          <Text style={{color: 'black', fontSize: 16}}>Choose File</Text>
+          <Text style={{left: -30, color: 'black', fontSize: 16}}>
+            {uploading ? (
+              <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                <Text>{transferred} % Done!</Text>
+                <ActivityIndicator animating={true} color={'#DA5B22'} />
               </View>
-            </TouchableOpacity>
-          </View>
-
-          <InputField
-            label={'Product Name'}
-            value={productName}
-            onChangeText={onProductName}
-          />
-          <InputField
-            label={'Stock'}
-            value={stock}
-            onChangeText={onStock}
-            keyboardType={'numeric'}
-          />
-          <InputField
-            label={'Description'}
-            value={description}
-            onChangeText={onDescription}
-          />
-          <InputField
-            label={'Price'}
-            value={price}
-            onChangeText={onPrice}
-            keyboardType={'numeric'}
-          />
-          <InputField
-            label={'IGST'}
-            value={igst}
-            onChangeText={onIgst}
-            keyboardType={'numeric'}
-          />
-          <InputField
-            label={'HSN Code'}
-            value={hsnCode}
-            onChangeText={onHsnCode}
-            keyboardType={'numeric'}
-          />
+            ) : (
+              <View></View>
+            )}
+          </Text>
+          <TouchableOpacity
+            onPress={handleChoosePhoto}
+            style={styles.imageWrapper}>
+            <Image
+              source={
+                image === ''
+                  ? require('../../../../assets/images/upload.png')
+                  : {uri: image}
+              }
+              style={styles.imageStyle}
+            />
+          </TouchableOpacity>
         </View>
+
+        <InputField
+          label={'Product Name'}
+          value={productName}
+          onChangeText={onProductName}
+        />
+        <InputField
+          label={'Stock'}
+          value={stock}
+          onChangeText={onStock}
+          keyboardType={'numeric'}
+        />
+        <InputField
+          label={'Description'}
+          value={description}
+          onChangeText={onDescription}
+        />
+        <InputField
+          label={'Price'}
+          value={price}
+          onChangeText={onPrice}
+          keyboardType={'numeric'}
+        />
+        <InputField
+          label={'IGST'}
+          value={igst}
+          onChangeText={onIgst}
+          keyboardType={'numeric'}
+        />
+        <InputField
+          label={'HSN Code'}
+          value={hsnCode}
+          onChangeText={onHsnCode}
+          keyboardType={'numeric'}
+        />
       </ScrollView>
       <View style={styles.updateButton}>
         <CircleButton name={'Update'} height={82} onPress={handleUpdate} />
@@ -202,14 +196,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  inputWrapper: {
-    marginHorizontal: 20,
-  },
   fileWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    marginHorizontal: 10,
   },
   imageWrapper: {
     borderWidth: 1,

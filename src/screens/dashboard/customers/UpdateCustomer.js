@@ -1,4 +1,4 @@
-import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
@@ -61,13 +61,11 @@ const UpdateCustomer = ({route, navigation}) => {
 
   return (
     <View style={styles.container}>
-      <SafeAreaView>
-        <Header
-          btnName={'CANCEL'}
-          screenNname={'Update Customer'}
-          onPress={onCancel}
-        />
-      </SafeAreaView>
+      <Header
+        btnName={'CANCEL'}
+        screenNname={'Update Customer'}
+        onPress={onCancel}
+      />
       <ScrollView>
         <View style={styles.inputWrapper}>
           <InputField
@@ -125,6 +123,7 @@ const styles = StyleSheet.create({
   },
   inputWrapper: {
     marginHorizontal: 20,
+    marginTop: Platform.OS === 'ios' ? 60 : 30,
   },
   buttonWrapper: {
     justifyContent: 'center',

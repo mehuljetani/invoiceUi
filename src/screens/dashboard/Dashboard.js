@@ -93,42 +93,34 @@ const Dashboard = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.dashBoardWrapper}>
-        <SafeAreaView>
-          <View style={styles.logoNameWrapper}>
-            <LogoName name={'Dashboard'} />
-          </View>
-        </SafeAreaView>
-        <View style={styles.componentWrapper}>
-          <View style={styles.component1}>
-            <Component
-              name={'Invoices'}
-              color={'#43B8B1'}
-              count={0}
-              onPress={onInvoice}
-            />
-            <Component
-              name={'Customers'}
-              color={'#F07946'}
-              count={count}
-              onPress={onCustomer}
-            />
-          </View>
-          <View style={styles.component2}>
-            <Component
-              name={'Products'}
-              color={'#8179F9'}
-              count={productCount}
-              onPress={onProduct}
-            />
-            <Component
-              name={'Payments'}
-              color={'#F44F82'}
-              count={19}
-              onPress={onPayment}
-            />
-          </View>
-        </View>
+      <LogoName name={'Dashboard'} containerStyle={{marginBottom: hp(7)}} />
+      <View style={styles.component1}>
+        <Component
+          name={'Invoices'}
+          color={'#43B8B1'}
+          count={0}
+          onPress={onInvoice}
+        />
+        <Component
+          name={'Customers'}
+          color={'#F07946'}
+          count={count}
+          onPress={onCustomer}
+        />
+      </View>
+      <View style={styles.component2}>
+        <Component
+          name={'Products'}
+          color={'#8179F9'}
+          count={productCount}
+          onPress={onProduct}
+        />
+        <Component
+          name={'Payments'}
+          color={'#F44F82'}
+          count={19}
+          onPress={onPayment}
+        />
       </View>
     </View>
   );
@@ -139,15 +131,12 @@ export default Dashboard;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  dashBoardWrapper: {
     marginHorizontal: wp(7),
     marginVertical: hp(12),
   },
   logoNameWrapper: {
     marginBottom: hp(5),
   },
-  componentWrapper: {},
   component1: {
     flexDirection: 'row',
     justifyContent: 'space-around',

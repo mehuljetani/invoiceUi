@@ -12,4 +12,17 @@ import Header from '../components/header/Header';
 // dashboard
 import Component from '../components/dashboard/Component';
 
-export {LogoName, InputField, CircleButton, Header, Component, RectButton};
+// dashboard invoice header
+import InvoiceHeader from './dashboard/invoice/InvoiceHeader';
+import TextBox from './dashboard/invoice/TextBox';
+
+export {
+  LogoName,
+  InputField,
+  CircleButton,
+  Header,
+  Component,
+  RectButton,
+  InvoiceHeader,
+  TextBox,
+};

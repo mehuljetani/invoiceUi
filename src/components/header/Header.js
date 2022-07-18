@@ -1,14 +1,13 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Platform, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {fp, fv, hp, wp} from '../constants/Responsive';
 
 const Header = ({screenNname, onPress, btnName}) => {
   return (
     <View style={styles.btnWrapper}>
-      <TouchableOpacity style={styles.buttonStyle} onPress={onPress}>
+      <TouchableOpacity onPress={onPress}>
         <Text style={styles.btnTextStyle}>{btnName}</Text>
       </TouchableOpacity>
-
       <View style={styles.textWrapper}>
         <Text style={styles.textStyle}>{screenNname}</Text>
       </View>
@@ -19,9 +18,8 @@ const Header = ({screenNname, onPress, btnName}) => {
 const styles = StyleSheet.create({
   btnWrapper: {
     marginHorizontal: wp(5),
-    marginVertical: hp(3),
+    marginTop: Platform.OS === 'ios' ? hp(7) : hp(5),
   },
-  buttonStyle: {},
   btnTextStyle: {
     color: 'black',
     fontSize: 20,

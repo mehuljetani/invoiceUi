@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "215744909597",
+    "project_id": "invoiceui",
+    "storage_bucket": "invoiceui.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215744909597:android:edc86e376d4a4a83fd11f4",
+        "android_client_info": {
+          "package_name": "com.invoiceui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215744909597-irgdb1h5fcbpcru5tf7gjpj0scmg5jtb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0oSQwnmsGv8EC7km55E4ONKEoDGE4MLc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215744909597-irgdb1h5fcbpcru5tf7gjpj0scmg5jtb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

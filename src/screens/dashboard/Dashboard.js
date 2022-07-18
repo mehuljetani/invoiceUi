@@ -8,7 +8,11 @@ import {useIsFocused} from '@react-navigation/native';
 import {hp, wp} from '../../components/constants/Responsive';
 import {LogoName} from '../../components/index';
 import {Component} from '../../components/index';
-import {addCustomer, productAdd} from '../../redux/action/index';
+import {
+  addCustomer,
+  getCustomerData,
+  productAdd,
+} from '../../redux/action/index';
 
 const Dashboard = ({navigation}) => {
   const [count, setCount] = useState();
@@ -17,13 +21,13 @@ const Dashboard = ({navigation}) => {
   const dispatch = useDispatch();
 
   const customerData = async () => {
-    const users = await firestore()
-      .collection('Users')
-      .doc(auth().currentUser.uid)
-      .collection('Customer')
-      .get()
-      .catch(e => console.log(e));
-    dispatch(addCustomer(users.docs));
+    // const users = await firestore()
+    //   .collection('Users')
+    //   .doc(auth().currentUser.uid)
+    //   .collection('Customer')
+    //   .get()
+    //   .catch(e => console.log(e));
+    // dispatch(addCustomer(users.docs));
 
     const product = await firestore()
       .collection('Users')
@@ -38,11 +42,28 @@ const Dashboard = ({navigation}) => {
     if (isFocused) {
       counter();
       customerData();
+      getData();
     } else {
       return;
     }
   });
 
+  const getData = async () => {
+    let request = {
+      data: {
+        collection: 'Customer',
+      },
+      onSuccess: res => {
+        console.log('Responnse at screen', res);
+      },
+      onFail: err => {
+        console.log('Error at screen :: ', err);
+      },
+    };
+    dispatch(getCustomerData(request));
+  };
+
+  // To be removed
   const counter = () => {
     firestore()
       .collection('Users')

@@ -67,7 +67,7 @@ const ProductDetail = ({route, navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Header btnName={'BACK'} onPress={onBack} />
+      <Header leftBtn={'BACK'} onPress={onBack} />
       <Text style={styles.NameStyle}>{data.productName}</Text>
       <View style={styles.imageWrapper}>
         {isLoading ? (
@@ -94,22 +94,13 @@ const ProductDetail = ({route, navigation}) => {
         <TouchableOpacity onPress={toggleModal} style={styles.toggleButton}>
           <Text style={{color: 'white', fontSize: 16}}>Close</Text>
         </TouchableOpacity>
-        <View style={{marginHorizontal: 20}}>
-          <InputField
-            keyboardType={'numeric'}
-            label={'Add Stock'}
-            value={stock}
-            onChangeText={onStock}
-          />
-          <View style={styles.addStockStyle}>
-            <RectButton
-              btnName={'ADD STOCK '}
-              iconImage={''}
-              onPress={addStock}
-            />
-          </View>
-        </View>
-        <View style={{}}></View>
+        <InputField
+          keyboardType={'numeric'}
+          label={'Add Stock'}
+          value={stock}
+          onChangeText={onStock}
+        />
+        <RectButton btnName={'ADD STOCK '} iconImage={''} onPress={addStock} />
       </Modal>
       <View style={styles.btnWrapper}>
         <RectButton
@@ -147,14 +138,9 @@ const styles = StyleSheet.create({
     height: 130,
     width: 130,
   },
-  addStockStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 20,
-  },
   btnWrapper: {
     flexDirection: 'row',
-    marginTop: Platform.OS === 'ios' ? 190 : 50,
+    marginTop: Platform.OS === 'ios' ? 170 : 50,
     justifyContent: 'space-evenly',
   },
   toggleButton: {

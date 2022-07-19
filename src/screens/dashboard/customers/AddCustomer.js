@@ -89,7 +89,7 @@ const AddCustomer = ({navigation}) => {
     <View style={styles.container}>
       <Header
         screenNname={'Add Customer'}
-        btnName={'CANCEL'}
+        leftBtn={'CANCEL'}
         onPress={onCancel}
       />
       <ScrollView>
@@ -110,7 +110,7 @@ const AddCustomer = ({navigation}) => {
             onChangeText={onEmail}
           />
           <InputField label={'PAN No.'} value={panNo} onChangeText={onPanNo} />
-          <Text style={{color: 'black', fontSize: 16}}>
+          <Text style={{color: 'black', fontSize: 16, marginHorizontal: 20}}>
             Customer GST Details
           </Text>
           <InputField label={'GST No.'} value={gstNo} onChangeText={onGstNo} />
@@ -124,7 +124,9 @@ const AddCustomer = ({navigation}) => {
             value={gstStateCode}
             onChangeText={onGstStateCode}
           />
-          <Text style={{color: 'black', fontSize: 16}}>Billing Address</Text>
+          <Text style={{color: 'black', fontSize: 16, marginHorizontal: 20}}>
+            Billing Address
+          </Text>
           <InputField
             label={'Billing Address'}
             value={bAddress}
@@ -137,10 +139,10 @@ const AddCustomer = ({navigation}) => {
           />
           <InputField label={'State'} value={bState} onChangeText={onBState} />
           <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity onPress={() => onCheck(!check)}>
-              <View style={styles.checkbox}>
-                {check === true ? <Check /> : <View />}
-              </View>
+            <TouchableOpacity
+              onPress={() => onCheck(!check)}
+              style={styles.checkbox}>
+              {check === true ? <Check /> : <View />}
             </TouchableOpacity>
             <Text style={{color: 'black', fontSize: 16}}>
               Shipping address is same as billing address
@@ -194,6 +196,7 @@ const styles = StyleSheet.create({
     marginRight: wp(2),
     justifyContent: 'center',
     alignItems: 'center',
+    marginHorizontal: 20,
   },
   correctStyle: {
     height: hp(2),

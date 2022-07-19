@@ -47,7 +47,7 @@ const CustomerDetail = ({route, navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Header btnName={'BACK'} onPress={() => navigation.goBack()} />
+      <Header leftBtn={'BACK'} onPress={() => navigation.goBack()} />
       <Text style={styles.NameStyle}>{data.cName}</Text>
       <View style={styles.details}>
         <Detail label={'Customer Name '} value={data.cName} />

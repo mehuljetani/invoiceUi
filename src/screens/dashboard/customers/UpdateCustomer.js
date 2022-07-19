@@ -62,7 +62,7 @@ const UpdateCustomer = ({route, navigation}) => {
   return (
     <View style={styles.container}>
       <Header
-        btnName={'CANCEL'}
+        leftBtn={'CANCEL'}
         screenNname={'Update Customer'}
         onPress={onCancel}
       />
@@ -84,7 +84,9 @@ const UpdateCustomer = ({route, navigation}) => {
             onChangeText={onEmail}
           />
           <InputField label={'PAN No.'} value={panNo} onChangeText={onPanNo} />
-          <Text style={{fontSize: 21, color: 'black'}}>GST DETAILS</Text>
+          <Text style={{fontSize: 21, color: 'black', marginHorizontal: 20}}>
+            GST DETAILS
+          </Text>
           <InputField label={'GST No.'} value={gstNo} onChangeText={onGstNo} />
           <InputField
             label={'GST State'}
@@ -122,8 +124,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inputWrapper: {
-    marginHorizontal: 20,
-    marginTop: Platform.OS === 'ios' ? 60 : 30,
+    marginTop: 30,
   },
   buttonWrapper: {
     justifyContent: 'center',

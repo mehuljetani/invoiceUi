@@ -1,5 +1,5 @@
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {TextInput} from 'react-native-paper';
 import auth from '@react-native-firebase/auth';
 import {useNavigation} from '@react-navigation/native';
@@ -7,6 +7,7 @@ import {useDispatch} from 'react-redux';
 import {CircleButton, InputField, LogoName} from '../../components/index';
 import {hp, wp, fv} from '../../components/constants/Responsive';
 import {login} from '../../redux/action/index';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Login = () => {
   const [passVisible, setPassVisible] = useState(true);
@@ -30,11 +31,12 @@ const Login = () => {
     } else {
       auth()
         .signInWithEmailAndPassword(email, password)
-        .then(data => {
+        .then(async data => {
           const userdetail = {
             UID: data?.user?._user?.uid,
             email: data?.user?.email,
           };
+          await AsyncStorage.setItem('UID', userdetail.UID);
           dispatch(login(userdetail));
           navigate('Dashboard');
         })
@@ -43,6 +45,15 @@ const Login = () => {
         });
     }
   };
+
+  const loginAsync = async () => {
+    const loginId = await AsyncStorage.getItem('UID');
+    loginId && navigate('Dashboard');
+  };
+
+  useEffect(() => {
+    loginAsync();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -77,7 +88,7 @@ const Login = () => {
           style={{
             position: 'absolute',
             bottom: 9,
-            right: 2,
+            right: 27,
           }}>
           <Image
             source={passVisible === true ? hidePass : viewPass}
@@ -114,10 +125,11 @@ const styles = StyleSheet.create({
     marginBottom: hp(2),
   },
   logoNameWrapper: {
-    marginHorizontal: wp(7),
+    // marginHorizontal: wp(7),
   },
   passwordStyle: {
     fontSize: 16,
+    marginHorizontal: 20,
     backgroundColor: '#F4F4F4',
   },
   nextButtonWrapper: {

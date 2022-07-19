@@ -117,7 +117,7 @@ const UpdateProduct = ({route, navigation}) => {
   return (
     <View style={styles.container}>
       <Header
-        btnName={'CANCEL'}
+        leftBtn={'CANCEL'}
         screenNname={'Update Product'}
         onPress={onCancel}
       />
@@ -131,7 +131,7 @@ const UpdateProduct = ({route, navigation}) => {
                 <ActivityIndicator animating={true} color={'#DA5B22'} />
               </View>
             ) : (
-              <View></View>
+              <></>
             )}
           </Text>
           <TouchableOpacity

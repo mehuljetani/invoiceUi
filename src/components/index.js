@@ -12,9 +12,8 @@ import Header from '../components/header/Header';
 // dashboard
 import Component from '../components/dashboard/Component';
 
-// dashboard invoice header
-import InvoiceHeader from './dashboard/invoice/InvoiceHeader';
-import TextBox from './dashboard/invoice/TextBox';
+// invoice dashboard
+import InvoiceList from './dashboard/invoice/InvoiceList';
 
 export {
   LogoName,
@@ -23,6 +22,5 @@ export {
   Header,
   Component,
   RectButton,
-  InvoiceHeader,
-  TextBox,
+  InvoiceList,
 };

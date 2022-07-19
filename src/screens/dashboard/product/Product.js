@@ -57,7 +57,7 @@ const Product = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Header screenNname={'Products'} btnName={'BACK'} onPress={onBack} />
+      <Header screenNname={'Products'} leftBtn={'BACK'} onPress={onBack} />
       <FlatList
         data={product}
         renderItem={renderItem}

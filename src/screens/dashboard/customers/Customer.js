@@ -68,7 +68,7 @@ const Customer = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Header screenNname={'Customers'} onPress={onBack} btnName={'BACK'} />
+      <Header screenNname={'Customers'} onPress={onBack} leftBtn={'BACK'} />
       <FlatList data={user} renderItem={renderItem} style={{marginTop: 30}} />
       <View style={styles.buttonStyle}>
         <CircleButton

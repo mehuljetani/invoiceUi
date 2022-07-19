@@ -112,13 +112,13 @@ const AddProduct = ({navigation}) => {
         .collection('Product')
         .add(product)
         .then(() => {
-          setProductName('');
-          setDesscription('');
-          setStock('');
-          setPrice('');
-          setIgst('');
-          setHsnCode('');
-          setImage('');
+          // setProductName('');
+          // setDesscription('');
+          // setStock('');
+          // setPrice('');
+          // setIgst('');
+          // setHsnCode('');
+          // setImage('');
           alert('product added');
           navigation.navigate('Dashboard');
         })
@@ -129,7 +129,7 @@ const AddProduct = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Header
-        btnName={'CANCEL'}
+        leftBtn={'CANCEL'}
         screenNname={'Add Product'}
         onPress={onCancel}
       />
@@ -144,11 +144,12 @@ const AddProduct = ({navigation}) => {
                 <ActivityIndicator animating={true} color={'#DA5B22'} />
               </View>
             ) : (
-              <View />
+              <></>
             )}
           </Text>
           <TouchableOpacity
             onPress={handleChoosePhoto}
+            s
             style={styles.imageWrapper}>
             <Image
               source={
@@ -217,6 +218,7 @@ const styles = StyleSheet.create({
     fontSize: 21,
     marginHorizontal: 20,
     color: 'black',
+    marginTop: 20,
   },
   fileWrapper: {
     flexDirection: 'row',

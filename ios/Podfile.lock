@@ -622,6 +622,9 @@ PODS:
   - Firebase/Firestore (9.2.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 9.2.0)
+  - Firebase/Messaging (9.2.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 9.2.0)
   - Firebase/Storage (9.2.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 9.2.0)
@@ -659,6 +662,20 @@ PODS:
     - "gRPC-C++ (~> 1.44.0)"
     - leveldb-library (~> 1.22)
     - nanopb (< 2.30910.0, >= 2.30908.0)
+  - FirebaseInstallations (9.3.0):
+    - FirebaseCore (~> 9.0)
+    - GoogleUtilities/Environment (~> 7.7)
+    - GoogleUtilities/UserDefaults (~> 7.7)
+    - PromisesObjC (~> 2.1)
+  - FirebaseMessaging (9.2.0):
+    - FirebaseCore (~> 9.0)
+    - FirebaseInstallations (~> 9.0)
+    - GoogleDataTransport (< 10.0.0, >= 9.1.4)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/Environment (~> 7.7)
+    - GoogleUtilities/Reachability (~> 7.7)
+    - GoogleUtilities/UserDefaults (~> 7.7)
+    - nanopb (< 2.30910.0, >= 2.30908.0)
   - FirebaseStorage (9.2.0):
     - FirebaseAppCheckInterop (~> 9.0)
     - FirebaseAuthInterop (~> 9.0)
@@ -688,6 +705,8 @@ PODS:
     - GoogleUtilities/Reachability
   - "GoogleUtilities/NSData+zlib (7.7.0)"
   - GoogleUtilities/Reachability (7.7.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (7.7.0):
     - GoogleUtilities/Logger
   - "gRPC-C++ (1.44.0)":
     - "gRPC-C++/Implementation (= 1.44.0)"
@@ -1052,6 +1071,10 @@ PODS:
     - Firebase/Firestore (= 9.2.0)
     - React-Core
     - RNFBApp
+  - RNFBMessaging (15.2.0):
+    - Firebase/Messaging (= 9.2.0)
+    - React-Core
+    - RNFBApp
   - RNFBStorage (15.1.1):
     - Firebase/Storage (= 9.2.0)
     - React-Core
@@ -1113,6 +1136,7 @@ DEPENDENCIES:
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBFirestore (from `../node_modules/@react-native-firebase/firestore`)"
+  - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
   - "RNFBStorage (from `../node_modules/@react-native-firebase/storage`)"
   - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -1131,6 +1155,8 @@ SPEC REPOS:
     - FirebaseCoreExtension
     - FirebaseCoreInternal
     - FirebaseFirestore
+    - FirebaseInstallations
+    - FirebaseMessaging
     - FirebaseStorage
     - FirebaseStorageInternal
     - fmt
@@ -1224,6 +1250,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/auth"
   RNFBFirestore:
     :path: "../node_modules/@react-native-firebase/firestore"
+  RNFBMessaging:
+    :path: "../node_modules/@react-native-firebase/messaging"
   RNFBStorage:
     :path: "../node_modules/@react-native-firebase/storage"
   RNImageCropPicker:
@@ -1250,6 +1278,8 @@ SPEC CHECKSUMS:
   FirebaseCoreExtension: 900b065a4970c31ce8de4e966cee910188e3a07b
   FirebaseCoreInternal: 635d1c9a612a6502b6377a0c92af83758076ffff
   FirebaseFirestore: de27d96de10596ebc114adf25c6aa7d36dd91f2f
+  FirebaseInstallations: 54b40022cb06e462740c9f2b9fbe38b5e78a825a
+  FirebaseMessaging: 4eaf1b8a7464b2c5e619ad66e9b20ee3e3206b24
   FirebaseStorage: b47b4a04062ab07911063571241c103a8a2a2332
   FirebaseStorageInternal: 50c963664bc73739b68eb2d8427c91de5168dbcf
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
@@ -1296,6 +1326,7 @@ SPEC CHECKSUMS:
   RNFBApp: ac7643ca8c013ac175da0f2d2776d9a5f4eae00d
   RNFBAuth: 771989f00674cfda96395cc8a1e65aa4e40eb1b2
   RNFBFirestore: 3412ac1998c6841415906e9c1a98336c48d52806
+  RNFBMessaging: 804a08d6dc52725988c6b05b86845b0a213cc4ec
   RNFBStorage: b4c7780581486089fba015ef3c5544a06d4c29f1
   RNImageCropPicker: ffbba608264885c241cbf3a8f78eb7aeeb978241
   RNScreens: aa9a97835afbbdc18a4757870b2b59b7d9fae16a

@@ -54,7 +54,7 @@ const Dashboard = ({navigation}) => {
         collection: 'Customer',
       },
       onSuccess: res => {
-        console.log('Responnse at screen', res);
+        // console.log('Responnse at screen', res);
       },
       onFail: err => {
         console.log('Error at screen :: ', err);

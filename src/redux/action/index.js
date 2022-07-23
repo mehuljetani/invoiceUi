@@ -30,14 +30,14 @@ export const productAdd = data => {
 };
 
 export const getCustomerData = request => async dispatch => {
-  console.log('request?.data?.collectionName :: ', request?.data?.collection);
+  // console.log('request?.data?.collectionName :: ', request?.data?.collection);
   await firestore()
     .collection('Users')
     .doc(auth().currentUser.uid)
     .collection(request?.data?.collection)
     .get()
     .then(users => {
-      console.log('Response :: ', users);
+      // console.log('Response :: ', users);
       dispatch(addCustomer(users.docs));
       if (request?.onSuccess) {
         request?.onSuccess(users.docs);

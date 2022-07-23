@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   },
   btnWrapper: {
     flexDirection: 'row',
-    marginTop: Platform.OS === 'ios' ? 180 : 35,
+    marginTop: Platform.OS === 'ios' ? 180 : 5,
     justifyContent: 'space-evenly',
   },
 });

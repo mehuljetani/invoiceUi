@@ -12,12 +12,34 @@ import {useSelector} from 'react-redux';
 import {useEffect} from 'react';
 import {hp, wp, fv} from '../../../components/constants/Responsive';
 import {CircleButton, Header} from '../../../components/index';
+import PushNotification from 'react-native-push-notification';
 
 const Customer = ({navigation}) => {
   const customer = useSelector(state => state);
   const UID = customer?.login?.arr?.UID;
   const isFocused = useIsFocused();
   const user = useSelector(state => state?.addCustomer?.arr);
+
+  const handleNotification = (item, index) => {
+    PushNotification.cancelAllLocalNotifications();
+
+    PushNotification.localNotification({
+      channelId: 'test-channel',
+      title: 'you clicked on ' + item.cName,
+      message: item.phoneNo,
+      bigText:
+        'hey how are you ??? are you fine ??? hope u doing well... hope u all right',
+      id: index,
+    });
+
+    PushNotification.localNotificationSchedule({
+      channelId: 'test-channel',
+      title: 'Recall ',
+      message: 'you clicked on ' + item.cName + ' 6 second ago ',
+      date: new Date(Date.now() + 6 * 1000),
+      allowWhileIdle: true,
+    });
+  };
 
   useEffect(() => {
     if (isFocused) {
@@ -35,7 +57,7 @@ const Customer = ({navigation}) => {
     });
   };
 
-  const renderItem = ({item}) => {
+  const renderItem = ({item, index}) => {
     const userDocId = item.ref?._documentPath?._parts[3];
     item = item.data();
     const letter = item?.cName.charAt(0);
@@ -46,7 +68,9 @@ const Customer = ({navigation}) => {
       <View style={styles.customerWrapper}>
         <TouchableOpacity
           style={styles.btnStyle}
-          onPress={() => onCustomerDetail(item, userDocId)}>
+          onPress={() => (
+            onCustomerDetail(item, userDocId), handleNotification(item, index)
+          )}>
           <View
             style={[
               styles.btnWrapper,

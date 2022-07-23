@@ -13,12 +13,20 @@ import {
   getCustomerData,
   productAdd,
 } from '../../redux/action/index';
+import PushNotification from 'react-native-push-notification';
 
 const Dashboard = ({navigation}) => {
   const [count, setCount] = useState();
   const [productCount, setProductCount] = useState();
   const isFocused = useIsFocused();
   const dispatch = useDispatch();
+
+  const createChannels = () => {
+    PushNotification.createChannel({
+      channelId: 'test-channel',
+      channelName: 'Test Channel',
+    });
+  };
 
   const customerData = async () => {
     // const users = await firestore()
@@ -39,6 +47,8 @@ const Dashboard = ({navigation}) => {
   };
 
   useEffect(() => {
+    createChannels();
+
     if (isFocused) {
       counter();
       customerData();
